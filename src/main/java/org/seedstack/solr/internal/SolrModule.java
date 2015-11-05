@@ -5,14 +5,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
-package org.seedstack.seed.persistence.solr.internal;
+package org.seedstack.solr.internal;
 
 import com.google.inject.PrivateModule;
 import com.google.inject.name.Names;
 import com.google.inject.util.Providers;
 import org.apache.solr.client.solrj.SolrClient;
-import org.seedstack.seed.persistence.solr.api.SolrExceptionHandler;
-import org.seedstack.seed.transaction.utils.TransactionalClassProxy;
+import org.seedstack.solr.SolrExceptionHandler;
+import org.seedstack.seed.transaction.spi.TransactionalClassProxy;
 
 import java.util.Map;
 import java.util.Map.Entry;

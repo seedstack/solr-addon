@@ -8,11 +8,10 @@
 /**
  *
  */
-package org.seedstack.seed.persistence.solr.internal;
+package org.seedstack.solr.internal;
 
 import org.apache.solr.client.solrj.SolrClient;
-import org.seedstack.seed.core.api.SeedException;
-import org.seedstack.seed.persistence.solr.api.SolrErrorCodes;
+import org.seedstack.seed.SeedException;
 import org.seedstack.seed.transaction.spi.TransactionalLink;
 
 import java.util.ArrayDeque;

@@ -8,7 +8,7 @@
 /**
  *
  */
-package org.seedstack.seed.persistence.solr;
+package org.seedstack.solr;
 
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
@@ -18,9 +18,8 @@ import org.apache.solr.common.SolrDocumentList;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.seedstack.seed.it.AbstractSeedIT;
-import org.seedstack.seed.persistence.solr.api.Solr;
-import org.seedstack.seed.persistence.solr.fixtures.Person;
-import org.seedstack.seed.transaction.api.Transactional;
+import org.seedstack.solr.fixtures.Person;
+import org.seedstack.seed.transaction.Transactional;
 
 import javax.inject.Inject;
 import javax.inject.Named;
