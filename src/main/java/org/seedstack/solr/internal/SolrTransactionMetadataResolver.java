@@ -8,12 +8,12 @@
 /**
  *
  */
-package org.seedstack.seed.persistence.solr.internal;
+package org.seedstack.solr.internal;
 
 import org.aopalliance.intercept.MethodInvocation;
 import org.seedstack.seed.core.utils.SeedReflectionUtils;
-import org.seedstack.seed.persistence.solr.api.Solr;
-import org.seedstack.seed.persistence.solr.api.SolrExceptionHandler;
+import org.seedstack.solr.Solr;
+import org.seedstack.solr.SolrExceptionHandler;
 import org.seedstack.seed.transaction.spi.TransactionMetadata;
 import org.seedstack.seed.transaction.spi.TransactionMetadataResolver;
 

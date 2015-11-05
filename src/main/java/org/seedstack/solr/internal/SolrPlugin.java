@@ -8,7 +8,7 @@
 /**
  *
  */
-package org.seedstack.seed.persistence.solr.internal;
+package org.seedstack.solr.internal;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -22,11 +22,10 @@ import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.impl.CloudSolrClient;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.impl.LBHttpSolrClient;
-import org.seedstack.seed.core.api.Application;
-import org.seedstack.seed.core.api.SeedException;
+import org.seedstack.seed.Application;
+import org.seedstack.seed.SeedException;
 import org.seedstack.seed.core.internal.application.ApplicationPlugin;
-import org.seedstack.seed.persistence.solr.api.SolrErrorCodes;
-import org.seedstack.seed.persistence.solr.api.SolrExceptionHandler;
+import org.seedstack.solr.SolrExceptionHandler;
 import org.seedstack.seed.transaction.internal.TransactionPlugin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,7 +42,7 @@ import java.util.Map;
  * @author redouane.loulou@ext.mpsa.com
  */
 public class SolrPlugin extends AbstractPlugin {
-    public static final String SOLR_PLUGIN_CONFIGURATION_PREFIX = "org.seedstack.seed.persistence.solr";
+    public static final String SOLR_PLUGIN_CONFIGURATION_PREFIX = "org.seedstack.solr";
     private static final Logger LOGGER = LoggerFactory.getLogger(SolrPlugin.class);
 
     private final Map<String, SolrClient> solrClients = new HashMap<String, SolrClient>();
@@ -51,7 +50,7 @@ public class SolrPlugin extends AbstractPlugin {
 
     @Override
     public String name() {
-        return "seed-solr-plugin";
+        return "solr";
     }
 
     @Override

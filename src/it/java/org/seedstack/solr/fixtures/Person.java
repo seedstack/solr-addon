@@ -8,7 +8,7 @@
 /**
  *
  */
-package org.seedstack.seed.persistence.solr.fixtures;
+package org.seedstack.solr.fixtures;
 
 import org.apache.solr.client.solrj.beans.Field;
 

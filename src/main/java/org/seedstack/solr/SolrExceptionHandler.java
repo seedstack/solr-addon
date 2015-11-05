@@ -8,7 +8,7 @@
 /**
  *
  */
-package org.seedstack.seed.persistence.solr.api;
+package org.seedstack.solr;
 
 import org.apache.solr.client.solrj.SolrClient;
 import org.seedstack.seed.transaction.spi.ExceptionHandler;
