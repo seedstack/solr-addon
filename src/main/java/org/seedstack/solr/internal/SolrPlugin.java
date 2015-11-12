@@ -12,7 +12,6 @@ package org.seedstack.solr.internal;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import io.nuun.kernel.api.Plugin;
 import io.nuun.kernel.api.plugin.InitState;
 import io.nuun.kernel.api.plugin.PluginException;
 import io.nuun.kernel.api.plugin.context.InitContext;
@@ -25,13 +24,12 @@ import org.apache.solr.client.solrj.impl.LBHttpSolrClient;
 import org.seedstack.seed.Application;
 import org.seedstack.seed.SeedException;
 import org.seedstack.seed.core.internal.application.ApplicationPlugin;
-import org.seedstack.solr.SolrExceptionHandler;
 import org.seedstack.seed.transaction.internal.TransactionPlugin;
+import org.seedstack.solr.SolrExceptionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.net.MalformedURLException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,25 +54,9 @@ public class SolrPlugin extends AbstractPlugin {
     @Override
     @SuppressWarnings("unchecked")
     public InitState init(InitContext initContext) {
-        Application application = null;
-        TransactionPlugin transactionPlugin = null;
-        Configuration solrConfiguration = null;
-
-        for (Plugin plugin : initContext.pluginsRequired()) {
-            if (plugin instanceof ApplicationPlugin) {
-                application = ((ApplicationPlugin) plugin).getApplication();
-                solrConfiguration = application.getConfiguration().subset(SolrPlugin.SOLR_PLUGIN_CONFIGURATION_PREFIX);
-            } else if (plugin instanceof TransactionPlugin) {
-                transactionPlugin = (TransactionPlugin) plugin;
-            }
-        }
-
-        if (application == null) {
-            throw new PluginException("Unable to find application plugin");
-        }
-        if (transactionPlugin == null) {
-            throw new PluginException("Unable to find transaction plugin");
-        }
+        Application application = initContext.dependency(ApplicationPlugin.class).getApplication();
+        TransactionPlugin transactionPlugin = initContext.dependency(TransactionPlugin.class);
+        Configuration solrConfiguration = application.getConfiguration().subset(SolrPlugin.SOLR_PLUGIN_CONFIGURATION_PREFIX);
 
         String[] solrClients = solrConfiguration.getStringArray("clients");
 
@@ -124,11 +106,8 @@ public class SolrPlugin extends AbstractPlugin {
     }
 
     @Override
-    public Collection<Class<? extends Plugin>> requiredPlugins() {
-        Collection<Class<? extends Plugin>> plugins = new ArrayList<Class<? extends Plugin>>();
-        plugins.add(ApplicationPlugin.class);
-        plugins.add(TransactionPlugin.class);
-        return plugins;
+    public Collection<Class<?>> requiredPlugins() {
+        return Lists.<Class<?>>newArrayList(ApplicationPlugin.class, TransactionPlugin.class);
     }
 
     @Override
