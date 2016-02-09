@@ -26,6 +26,8 @@
         <solr.version>5.2.1</solr.version>
 
         <compatibility.version>1.0.0</compatibility.version>
+
+        <bintray.package>solr-addon</bintray.package>
     </properties>
 
     <build>
