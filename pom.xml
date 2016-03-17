@@ -19,10 +19,10 @@
 
     <groupId>org.seedstack.addons.solr</groupId>
     <artifactId>solr</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
 
     <properties>
-        <seed.version>2.1.0</seed.version>
+        <seed.version>2.3.0-SNAPSHOT</seed.version>
         <solr.version>5.2.1</solr.version>
 
         <compatibility.version>1.0.0</compatibility.version>
