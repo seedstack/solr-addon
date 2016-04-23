@@ -2,9 +2,9 @@
 title: "Basics"
 name: "Solr"
 repo: "https://github.com/seedstack/solr-addon"
-author: "SeedStack"
+date: 2016-02-09
+author: Adrien LAUER
 description: "Provides configuration, injection and transactions for Solr."
-min-version: "15.11+"
 backend: true
 weight: -1
 tags:
