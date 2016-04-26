@@ -36,14 +36,6 @@ class SolrClientLink implements TransactionalLink<SolrClient> {
         return solrClient;
     }
 
-    void push(SolrClient solrClient) {
-        perThreadObjectContainer.get().push(solrClient);
-    }
-
-    SolrClient pop() {
-        return perThreadObjectContainer.get().pop();
-    }
-
     SolrClient getCurrentClient() {
         SolrClient solrClient = this.perThreadObjectContainer.get().peek();
 
@@ -52,5 +44,18 @@ class SolrClientLink implements TransactionalLink<SolrClient> {
         } else {
             return null;
         }
+    }
+
+    void push(SolrClient solrClient) {
+        perThreadObjectContainer.get().push(solrClient);
+    }
+
+    SolrClient pop() {
+        Deque<SolrClient> solrClients = perThreadObjectContainer.get();
+        SolrClient solrClient = solrClients.pop();
+        if (solrClients.isEmpty()) {
+            perThreadObjectContainer.remove();
+        }
+        return solrClient;
     }
 }
