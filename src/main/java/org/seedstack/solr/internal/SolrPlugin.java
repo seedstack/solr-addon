@@ -62,7 +62,10 @@ public class SolrPlugin extends AbstractSeedPlugin {
                 throw SeedException.wrap(e, SolrErrorCode.UNABLE_TO_CREATE_CLIENT).put("clientName", clientName);
             }
 
-            solrExceptionHandlers.put(clientName, clientConfig.getExceptionHandler());
+            Class<? extends SolrExceptionHandler> exceptionHandler = clientConfig.getExceptionHandler();
+            if (exceptionHandler != null) {
+                solrExceptionHandlers.put(clientName, exceptionHandler);
+            }
         }
 
         if (!Strings.isNullOrEmpty(solrConfig.getDefaultClient())) {
