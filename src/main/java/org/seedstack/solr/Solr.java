@@ -16,8 +16,6 @@ import java.lang.annotation.Target;
 /**
  * This annotation accompanies the {@link org.seedstack.seed.transaction.Transactional} annotation to define the
  * transaction as a Solr one and specify the Solr connection.
- *
- * @author redouane.loulou@ext.mpsa.com
  */
 @Target({ElementType.METHOD, ElementType.TYPE, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)

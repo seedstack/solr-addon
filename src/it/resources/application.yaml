@@ -6,11 +6,9 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 
-[org.seedstack.solr]
-clients = client1, client2
-
-[org.seedstack.solr.client.client1]
-url = http://localhost:8983/solr/core0
-
-[org.seedstack.solr.client.client2]
-url = http://localhost:8983/solr/core1
+solr:
+  clients:
+    client1:
+      urls: http://localhost:8983/solr/core0
+    client2:
+      urls: http://localhost:8983/solr/core1

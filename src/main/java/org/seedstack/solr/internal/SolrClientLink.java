@@ -30,7 +30,7 @@ class SolrClientLink implements TransactionalLink<SolrClient> {
         SolrClient solrClient = this.perThreadObjectContainer.get().peek();
 
         if (solrClient == null) {
-            throw SeedException.createNew(SolrErrorCodes.ACCESSING_SOLR_CLIENT_OUTSIDE_TRANSACTION);
+            throw SeedException.createNew(SolrErrorCode.ACCESSING_SOLR_CLIENT_OUTSIDE_TRANSACTION);
         }
 
         return solrClient;

@@ -46,7 +46,7 @@ class SolrTransactionHandler implements TransactionHandler<SolrClient> {
         try {
             solrClientLink.pop().commit();
         } catch (Exception e) {
-            throw SeedException.wrap(e, SolrErrorCodes.UNABLE_TO_COMMIT);
+            throw SeedException.wrap(e, SolrErrorCode.UNABLE_TO_COMMIT);
         }
     }
 
@@ -55,7 +55,7 @@ class SolrTransactionHandler implements TransactionHandler<SolrClient> {
         try {
             solrClientLink.pop().rollback();
         } catch (Exception e) {
-            throw SeedException.wrap(e, SolrErrorCodes.UNABLE_TO_ROLLBACK);
+            throw SeedException.wrap(e, SolrErrorCode.UNABLE_TO_ROLLBACK);
         }
     }
 

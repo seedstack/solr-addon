@@ -11,24 +11,25 @@
 package org.seedstack.solr.internal;
 
 import org.aopalliance.intercept.MethodInvocation;
-import org.seedstack.seed.core.utils.SeedReflectionUtils;
-import org.seedstack.solr.Solr;
-import org.seedstack.solr.SolrExceptionHandler;
 import org.seedstack.seed.transaction.spi.TransactionMetadata;
 import org.seedstack.seed.transaction.spi.TransactionMetadataResolver;
+import org.seedstack.solr.Solr;
+import org.seedstack.solr.SolrExceptionHandler;
+
+import java.util.Optional;
 
 class SolrTransactionMetadataResolver implements TransactionMetadataResolver {
     static String defaultSolrClient;
 
     @Override
     public TransactionMetadata resolve(MethodInvocation methodInvocation, TransactionMetadata defaults) {
-        Solr solrClient = SeedReflectionUtils.getMetaAnnotationFromAncestors(methodInvocation.getMethod(), Solr.class);
+        Optional<Solr> solrClient = SolrResolver.INSTANCE.apply(methodInvocation.getMethod());
 
-        if (solrClient != null || SolrTransactionHandler.class.equals(defaults.getHandler())) {
+        if (solrClient.isPresent() || SolrTransactionHandler.class.equals(defaults.getHandler())) {
             TransactionMetadata result = new TransactionMetadata();
             result.setHandler(SolrTransactionHandler.class);
             result.setExceptionHandler(SolrExceptionHandler.class);
-            result.setResource(solrClient == null ? defaultSolrClient : solrClient.value());
+            result.setResource(solrClient.isPresent() ? solrClient.get().value() : defaultSolrClient);
             return result;
         }
 

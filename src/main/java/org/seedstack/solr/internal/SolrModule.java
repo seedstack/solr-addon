@@ -11,8 +11,8 @@ import com.google.inject.PrivateModule;
 import com.google.inject.name.Names;
 import com.google.inject.util.Providers;
 import org.apache.solr.client.solrj.SolrClient;
+import org.seedstack.seed.core.internal.transaction.TransactionalClassProxy;
 import org.seedstack.solr.SolrExceptionHandler;
-import org.seedstack.seed.transaction.spi.TransactionalClassProxy;
 
 import java.util.Map;
 import java.util.Map.Entry;

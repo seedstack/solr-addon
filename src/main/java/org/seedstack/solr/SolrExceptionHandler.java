@@ -16,8 +16,6 @@ import org.seedstack.seed.transaction.spi.TransactionMetadata;
 
 /**
  * Exception handler for Solr transactions.
- *
- * @author redouane.loulou@ext.mpsa.com
  */
 public interface SolrExceptionHandler extends ExceptionHandler<SolrClient> {
 

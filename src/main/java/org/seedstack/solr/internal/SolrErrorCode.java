@@ -7,10 +7,12 @@
  */
 package org.seedstack.solr.internal;
 
-enum SolrClientType {
-    HTTP,
+import org.seedstack.shed.exception.ErrorCode;
 
-    LOAD_BALANCED_HTTP,
-
-    CLOUD
+enum SolrErrorCode implements ErrorCode {
+    ACCESSING_SOLR_CLIENT_OUTSIDE_TRANSACTION,
+    UNABLE_TO_COMMIT,
+    UNABLE_TO_CREATE_CLIENT,
+    UNABLE_TO_ROLLBACK,
+    UNSUPPORTED_CLIENT_TYPE
 }
