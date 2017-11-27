@@ -1,5 +1,6 @@
 ---
 title: "Solr"
+addon: "Solr"
 repo: "https://github.com/seedstack/solr-addon"
 author: Adrien LAUER
 description: "Provides configuration, injection and transactions for Solr."
@@ -8,9 +9,6 @@ tags:
     - transactions
 zones:
     - Addons
-menu:
-    AddonSolr:
-        weight: 10
 ---
 
 Coming soon...
